@@ -2,3 +2,14 @@
 --Professor Molina
 
 --Comando SELEC com WHERE CUSTOMIZADO
+
+--comandoa para selecionar todos os registros da tabela médicos
+select *
+FROM medicos;
+
+select nome, idade
+FROM medicos;
+
+select *
+FROM medicos
+WHERE codm = 3;
