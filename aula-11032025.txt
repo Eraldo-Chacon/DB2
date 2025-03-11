@@ -3,7 +3,7 @@
 
 --Comando SELEC com WHERE CUSTOMIZADO
 
---comandoa para selecionar todos os registros da tabela médicos
+--comando para selecionar todos os registros da tabela médicos
 select *
 FROM medicos;
 
