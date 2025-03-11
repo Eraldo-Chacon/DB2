@@ -1,0 +1,4 @@
+--Aula do dia 11/03/2025
+--Professor Molina
+
+--Comando SELEC com WHERE
