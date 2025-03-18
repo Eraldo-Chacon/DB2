@@ -1,0 +1,160 @@
+SELECT count(*)
+FROM medicos
+WHERE especialidade = 'ortopedista';
+
+
+
+ASC; –ordem ascendente de resultado
+ORDER by idade DESC; –ordem descendente de pesquisa
+
+Agregação
+
+
+
+SELECT count(*)
+FROM medicos
+WHERE nome like (%m%) – Pesquisa se há “M” no nome do médico
+	ou
+WHERE nome like (m%)  – Pesquisa se há “M” no nome inicio do nome
+	ou
+WHERE nome like (%m)  – Pesquisa se há “M” no nome fim do nome
+
+SELECT count(*)
+FROM medicos
+WHERE nome is not null
+
+-- Exemplo de between
+SELECT *
+FROM medicos
+WHERE idade between 30 and 40; – ou WHERE idade >= 30 and idade <= 40;
+
+– aplicação do OR
+SELECT *
+FROM medicos
+WHERE especialidade = 'ortopedia' or 
+especialidade = 'neurologia’;
+
+
+
+Realizar as seguintes consultas no BD:
+
+
+FROM medicos	FROM funcionarios	FROM ambulatorios	FROM consultas	FROM pacientes
+
+
+
+
+1) Buscar o nome e o CPF dos médicos com menos de 40 anos ou com especialidade diferente de traumatologia 
+
+SELECT *
+FROM medicos
+WHERE 
+
+2) Buscar todos os dados das consultas marcadas no período da tarde após o dia 19/06/2006
+
+SELECT *
+FROM consultas
+
+– Buscar todos os dados das consultas marcadas no período da tarde após o dia 19/06/2006, “data >” valor maior que o dia 19, AND inclui mais um condicionante  BETWEEN  '12:00:00' AND '18:00:00'
+
+SELECT * 
+FROM consultas 
+WHERE data >'2006-06-19' 
+AND hora BETWEEN '12:00:00' AND '18:00:00';
+
+
+
+3) Buscar o nome e a idade dos pacientes que não residem em Florianópolis
+
+
+
+SELECT *
+FROM pacientes
+WHERE cidade != 'Florianópolis';
+
+4) Buscar a hora das consultas marcadas antes do dia 14/06/2006 e depois do dia 20/06/2006
+
+SELECT hora
+FROM consultas
+WHERE data BETWEEN 2006-06-14 AND 2006-06-20;
+
+
+
+
+SELECT *
+FROM consultas
+WHERE hora 
+
+WHERE hora >'2006-06-14' 
+AND hora BETWEEN '12:00:00' AND '18:00:00';
+
+
+5) Buscar o nome e a idade (em meses) dos pacientes
+
+SELECT *
+FROM pacientes
+WHERE
+
+
+6) Em quais cidades residem os funcionários?
+
+SELECT cidade
+FROM funcionarios
+
+
+
+7) Qual o menor e o maior salário dos funcionários da Florianópolis?
+
+SELECT *
+FROM funcionarios
+WHERE
+
+10) Qual o horário da última consulta marcada para o dia 13/06/2006?
+
+
+
+
+SELECT hora
+FROM Consultas
+WHERE data = '2006-06-13'
+AND hora = (SELECT MAX(hora) FROM Consultas WHERE data = '2006-06-13');
+
+11) Qual a média de idade dos médicos e o total de ambulatórios atendidos por eles?
+
+SELECT *
+FROM medicos
+WHERE
+
+12) Buscar o código, o nome e o salário líquido dos funcionários. O salário líquido é obtido pela diferença entre o salário cadastrado menos 20% deste mesmo salário
+
+
+	– selecionei nome, salario e multipliquei salario por 0.8(20%) como salario liquido
+SELECT nome, salario, salario * 0.8 AS salario_liquido
+FROM funcionarios
+
+
+
+13) Buscar o nome dos funcionários que terminam com a letra “a”
+
+SELECT *
+FROM funcionarios
+WHERE
+
+14) Buscar o nome e CPF dos funcionários que não possuam a seqüência “00000” em seus CPFs
+
+SELECT nome, CPF
+FROM funcionarios
+WHERE CPF  !='%00000%';
+
+
+15) Buscar o nome e a especialidade dos médicos cuja segunda e a última letra de seus nomes seja a letra “o”
+
+SELECT *
+FROM medicos
+WHERE
+
+16) Buscar os códigos e nomes dos pacientes com mais de 25 anos que estão com tendinite, fratura, gripe e sarampo 
+
+SELECT *
+FROM pacientes
+WHERE
