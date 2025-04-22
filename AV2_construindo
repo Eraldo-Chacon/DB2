@@ -1,0 +1,39 @@
+CREATE DATABASE SGBiblioteca;
+
+USE SGBiblioteca;
+
+-- Livros: (id, título, autor_id, ano_publicacao, genero, descricao, disponibilidade)
+CREATE TABLE livros (
+    id INT PRIMARY KEY,
+    titulo VARCHAR(400),
+    autor_id VARCHAR(100),
+	data_cadastro DATE,
+	telefone INT(12),
+    sexo CHAR(1)
+);
+
+
+
+-- Autores: (id, nome, nacionalidade, data_nascimento)
+CREATE TABLE autores (
+    id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    nacionalidade VARCHAR(100),
+    data_nascimento DATE,
+    sexo CHAR(1)
+);
+
+-- Usuários: (id, nome, email, telefone, data_cadastro)
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+	telefone INT(12),
+    data_cadastro DATE,
+    sexo CHAR(1)
+);
+
+-- Empréstimos: (id, id_usuario, id_livro, data_emprestimo, data_devolucao_prevista, data_devolucao_real, status)
+
+
+-- Reservas: (id, id_usuario, id_livro, data_reserva, status_reserva)
