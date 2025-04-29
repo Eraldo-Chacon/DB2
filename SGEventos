@@ -1,0 +1,52 @@
+CREATE DATABASE SGEventos;
+
+USE SGEventos;
+
+CREATE TABLE pessoa (
+id_pessoa VARCHAR(8) PRIMARY KEY,
+nome CHAR(200),
+email VARCHAR(200),
+telefone DECIMAL(11)
+);
+
+CREATE TABLE participantes (
+id_participantes VARCHAR(11) PRIMARY KEY,
+categoria VARCHAR(200),
+id_pessoa VARCHAR(8),
+FOREIGN KEY(id_pessoa) REFERENCES pessoa (id_pessoa)
+);
+
+CREATE TABLE organizadores (
+id_organizadores INT auto_increment PRIMARY KEY,
+nome CHAR(200),
+contato VARCHAR(200),
+cerimonial CHAR(100),
+id_pessoa VARCHAR(8),
+FOREIGN KEY(id_pessoa) REFERENCES pessoa (id_pessoa)
+);
+
+CREATE TABLE evento (
+id_evento VARCHAR(8) PRIMARY KEY,
+nome_evento CHAR(200),
+descricao BLOB(400),
+data_inicio DATETIME,
+data_fim DATETIME,
+endereco BLOB(400),
+id_organizadores INT,
+FOREIGN KEY(id_organizadores) REFERENCES organizadores (id_organizadores)
+);
+
+
+CREATE TABLE inscricoes (
+id_inscricoes VARCHAR(8) PRIMARY KEY,
+data_inscricao DATETIME,
+status_pagamento CHAR(100),
+tipo_reserva VARCHAR(100),
+id_participantes VARCHAR(11),
+id_evento VARCHAR(8),
+FOREIGN KEY(id_participantes) REFERENCES participantes (id_participantes),
+FOREIGN KEY(id_evento) REFERENCES evento (id_evento)
+);
+
+
+
